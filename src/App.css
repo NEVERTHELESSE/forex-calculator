@@ -5,6 +5,13 @@ body {
   justify-content: center;
   height: 100vh;
 }
+button {
+  padding: 10px 20px;
+  margin: 4px;
+}
+.active-button {
+  background: blue;
+}
 
 form {
   padding: 1rem;
@@ -35,14 +42,6 @@ form {
 
 main {
   margin-bottom: 5px;
-  button {
-    padding: 10px 20px;
-    margin: 4px;
-  }
-
-  .active-button {
-    background: blue;
-  }
 }
 
 .cover {
@@ -52,4 +51,16 @@ main {
 
 .container {
   margin: 0 3rem;
+}
+
+.contain {
+  background: gray;
+  border-radius: 10px;
+  display: flex;
+  padding: 0;
+  width: max-content;
+}
+.position {
+  border-radius: 10px;
+  margin: 0;
 }

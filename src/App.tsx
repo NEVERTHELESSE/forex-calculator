@@ -31,15 +31,49 @@ export default function App() {
         setPipLoss(Number(lossPip.toFixed(1)));
         setPipProfit(Number(forwardPip.toFixed(1)));
         break;
-
+      case "EURUSD":
+        const fPip = Number((sl - price).toFixed(5)) / 0.0001;
+        setPipLoss(fPip);
+        setLoss(18.7 * 0.1);
+        break;
+      case "AUDUSD":
+        const lossesPip = Number(((price - sl) / 0.0001).toFixed(1));
+        setLoss(lossesPip * 0.1 * lot * 100);
+        const forwardPips = Number(((tp - price) / 0.0001).toFixed(1));
+        setProfit(forwardPips * 0.1 * lot * 100);
+        setPipLoss(lossesPip);
+        setPipProfit(forwardPips);
+        break;
       default:
         break;
     }
     setCommission(lot * 10 * 0.6);
   }
 
+  const toggles = ["Long", "Short"];
+  const [activePosition, setActivePosition] = useState("Long");
+  function togglePosition(selection: string) {
+    setActivePosition(selection);
+  }
+
   return (
     <section>
+      <div className="flex contain ">
+        {toggles.map((toggle) => (
+          <button
+            className={
+              toggle == activePosition
+                ? "active-button position-button"
+                : "position-button"
+            }
+            onClick={() => togglePosition(toggle)}
+            key={toggle}
+          >
+            {toggle}
+          </button>
+        ))}
+      </div>
+
       {/* <Pairs /> */}
       <main>
         <h1>pairs {selected}</h1>
