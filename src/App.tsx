@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 
 export default function App() {
-  const pairs = ["AUDUSD", "GBPJPY", "EURUSD", "GBPUSD"];
+  const pairs = ["AUDUSD", "GOLD", "GBPJPY", "EURUSD", "GBPUSD"];
 
   const [selected, setSelected] = useState("AUDUSD");
   function activePair(pair: string) {
@@ -21,6 +21,16 @@ export default function App() {
   function calculate(e: FormEvent) {
     e.preventDefault();
     switch (selected) {
+      case "GOLD":
+        const pipSize = 0.01;
+        const goldLossPip = (price - sl) / pipSize;
+        const profitPip = (tp - price) / pipSize;
+        const pipValuePerLot = 1;
+        setLoss(Number((goldLossPip * pipValuePerLot * lot).toFixed(2)));
+        setProfit(Number((profitPip * pipValuePerLot * lot).toFixed(2)));
+        setPipLoss(Number(goldLossPip.toFixed(1)));
+        setPipProfit(Number(profitPip.toFixed(1)));
+        break;
       case "GBPJPY":
         const gbpPrice = 155.7;
         const lossPip = (price - sl) * 100;
@@ -101,7 +111,7 @@ export default function App() {
             type="price"
             name="price"
             id="price"
-            placeholder="212.765"
+            placeholder={selected == "GOLD" ? "5279.022" : "0.70700"}
             onChange={(e) => setPrice(Number(e.target.value))}
           />
           <h2>Take Profit</h2>
