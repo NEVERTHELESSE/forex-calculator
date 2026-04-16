@@ -97,7 +97,7 @@ export default function App() {
           </button>
         ))}
       </main>
-      <div className="cover">
+      <div className="flex justify-between">
         <form onSubmit={calculate}>
           <h2>Lot size </h2>
           <input
