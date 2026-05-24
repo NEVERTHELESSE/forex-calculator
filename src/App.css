@@ -1,9 +1,9 @@
 body {
-  padding: 2rem;
+  /* padding: 2rem; */
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  /* height: 100vh; */
 }
 button {
   padding: 10px 20px;
@@ -23,8 +23,9 @@ form {
     padding: 20px;
     font-size: 1.5rem;
     border-radius: 1rem;
-    border: 0;
-    text-align: center;
+    border: 1px solid;
+text-align: center;
+box-shadow: inset 0  1px 1px rgb(175, 175, 175);
   }
 
   button {
